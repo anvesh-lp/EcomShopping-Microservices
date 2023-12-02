@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shopping.productservice.dto.ProductRequest;
 import com.shopping.productservice.repositories.ProductRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -64,4 +65,21 @@ class ProductServiceApplicationTests {
                 .build();
     }
 
+    @BeforeEach
+    void clearDataBase(){
+        productRepository.deleteAll();
+    }
+    @Test
+    void shouldGetTheProduct() throws Exception {
+        ProductRequest productRequest = getProductRequest();
+        String requestContent = objectMapper.writeValueAsString(productRequest);
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/product")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestContent))
+                .andExpect(status().isCreated());
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/product")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        Assertions.assertEquals(1, productRepository.findAll().size());
+    }
 }
