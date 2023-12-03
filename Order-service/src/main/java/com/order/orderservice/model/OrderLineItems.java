@@ -19,7 +19,7 @@ public class OrderLineItems {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String squId;
+    private String skuCode;
     private BigDecimal price;
     private Integer quantity;
 }
