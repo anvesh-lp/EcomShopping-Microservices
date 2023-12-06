@@ -22,7 +22,7 @@ public class InventoryServiceApplication {
     public CommandLineRunner loadData(InventoryRepository inventoryRepository) {
         log.info("Loading Data into Database..............");
         return args -> {
-            Inventory inventory1 = Inventory.builder().skuCode("Iphone 13").quantity(100).build();
+            Inventory inventory1 = Inventory.builder().skuCode("Iphone_13").quantity(100).build();
             Inventory inventory2 = Inventory.builder().skuCode("samsung").quantity(0).build();
             inventoryRepository.save(inventory1);
             inventoryRepository.save(inventory2);
