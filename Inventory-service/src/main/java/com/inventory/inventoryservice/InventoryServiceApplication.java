@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @Slf4j
 @RequiredArgsConstructor
+//@EnableEurekaClient
 public class InventoryServiceApplication {
 
     public static void main(String[] args) {
