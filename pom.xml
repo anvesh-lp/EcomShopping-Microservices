@@ -17,6 +17,7 @@
         <module>Order-service</module>
         <module>product-service</module>
         <module>DiscoveryServer</module>
+        <module>api-gateway</module>
     </modules>
     <properties>
         <maven.compiler.source>19</maven.compiler.source>

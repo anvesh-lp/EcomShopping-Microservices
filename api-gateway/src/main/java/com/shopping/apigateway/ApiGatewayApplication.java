@@ -1,14 +1,13 @@
-package com.order.orderservice;
+package com.shopping.apigateway;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@EnableEurekaClient
-
-public class OrderServiceApplication {
-
+public class ApiGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderServiceApplication.class, args);
+        SpringApplication.run(ApiGatewayApplication.class, args);
     }
+
 }
