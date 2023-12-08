@@ -1,0 +1,10 @@
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/model/Order.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/controllers/OrderController.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/Configurations/WebClientConfig.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/dto/OrderRequest.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/OrderServiceApplication.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/model/OrderLineItems.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/dto/InventoryResponse.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/services/OrderService.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/dto/OrderLineItemsDto.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/Order-service/src/main/java/com/order/orderservice/repositories/OrderRepository.java
