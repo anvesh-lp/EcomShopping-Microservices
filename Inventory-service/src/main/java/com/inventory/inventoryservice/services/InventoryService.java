@@ -19,7 +19,7 @@ public class InventoryService {
             return InventoryResponse
                     .builder()
                     .squCode(inventory.getSkuCode())
-                    .isSquCode(inventory.getQuantity() > 0)
+                    .isSquCode(inventory.getQuantity() > 1)
                     .build();
         }).toList();
     }
