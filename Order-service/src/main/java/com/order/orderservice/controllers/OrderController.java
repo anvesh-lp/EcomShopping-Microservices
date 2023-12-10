@@ -2,6 +2,7 @@ package com.order.orderservice.controllers;
 
 
 import com.order.orderservice.dto.InventoryResponse;
+import com.order.orderservice.dto.OrderEvent;
 import com.order.orderservice.dto.OrderLineItemsDto;
 import com.order.orderservice.dto.OrderRequest;
 import com.order.orderservice.services.OrderService;
@@ -10,6 +11,7 @@ import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -26,6 +28,7 @@ public class OrderController {
 
     private final OrderService orderService;
     private final WebClient.Builder webClient;
+    private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
@@ -47,7 +50,8 @@ public class OrderController {
         assert inventoryResponses != null;
         boolean allProductsInStock = Arrays.stream(inventoryResponses).allMatch(InventoryResponse::getIsSquCode);
         if (allProductsInStock) {
-            orderService.saveOrder(orderRequest);
+            Long id = orderService.saveOrder(orderRequest);
+            kafkaTemplate.send("notificationTopic", OrderEvent.builder().id("start").orderId("" + id).build());
             return CompletableFuture.completedFuture("Order Placed Successfully");
 
         }

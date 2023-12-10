@@ -26,7 +26,7 @@ public class OrderService {
                 .build();
     }
 
-    public void saveOrder(OrderRequest orderRequest) {
+    public Long saveOrder(OrderRequest orderRequest) {
         List<OrderLineItems> orders = orderRequest.getOrderLineItemsList()
                 .stream()
                 .map(this::convertToOrderline)
@@ -34,6 +34,8 @@ public class OrderService {
         Order order = new Order();
         order.setOrderLineItemsList(orders);
         orderRepository.save(order);
+
         log.info("Order with {} ID placed successfully",order.getId());
+        return order.getId();
     }
 }
