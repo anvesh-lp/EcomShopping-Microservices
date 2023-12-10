@@ -1,0 +1,7 @@
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/ProductServiceApplication.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/repositories/ProductRepository.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/dto/ProductRequest.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/model/Product.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/dto/ProductResponse.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/controllers/ProductController.java
+/Users/nagaanveshkunuguntla/Desktop/JavaProjects/EcomShopping-Microservices/product-service/src/main/java/com/shopping/productservice/services/ProductService.java

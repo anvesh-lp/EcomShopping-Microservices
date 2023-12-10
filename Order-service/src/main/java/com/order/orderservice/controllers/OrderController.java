@@ -5,6 +5,8 @@ import com.order.orderservice.dto.InventoryResponse;
 import com.order.orderservice.dto.OrderLineItemsDto;
 import com.order.orderservice.dto.OrderRequest;
 import com.order.orderservice.services.OrderService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -25,7 +29,9 @@ public class OrderController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public String placeOrder(@RequestBody OrderRequest orderRequest) {
+    @CircuitBreaker(name = "services", fallbackMethod = "onFallBack")
+    @TimeLimiter(name = "services")
+    public CompletionStage<String> placeOrder(@RequestBody OrderRequest orderRequest) {
 
         log.info("------------Inside the Place order in order service-------------");
         List<String> squCodes = orderRequest.getOrderLineItemsList()
@@ -42,13 +48,18 @@ public class OrderController {
         boolean allProductsInStock = Arrays.stream(inventoryResponses).allMatch(InventoryResponse::getIsSquCode);
         if (allProductsInStock) {
             orderService.saveOrder(orderRequest);
-            return "Order Placed Successfully";
+            return CompletableFuture.completedFuture("Order Placed Successfully");
+
         }
-        return "Items not in inventory";
+        return CompletableFuture.completedFuture("Order not placed");
     }
 
     @GetMapping("/get")
     public String getStatus() {
         return "This is working";
+    }
+
+    public CompletionStage<String> onFallBack(OrderRequest orderRequest, Exception e) {
+        return CompletableFuture.completedFuture("oops! something unexpected happened!! please try again " + e.getMessage());
     }
 }
