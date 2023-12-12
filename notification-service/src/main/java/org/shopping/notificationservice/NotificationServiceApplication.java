@@ -17,6 +17,7 @@ public class NotificationServiceApplication {
 
     @KafkaListener(topics = "notificationTopic")
     public void handleNotifications(OrderEvent orderEvent) {
+//        todo implement the notifications logic here
         log.info("Received notification successfully {}", orderEvent.getOrderId());
     }
 
