@@ -2,3 +2,7 @@
 /order-service/target/
 /product-service/target/
 /api-gateway/target/
+/order-service/target/
+/mongo-data/
+/my-sql/
+/grafana/
